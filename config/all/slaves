@@ -1,0 +1,6 @@
+# A Spark Worker will be started on each of the machines listed below.
+{{hex.name}}-n2
+{{hex.name}}-n3
+{{hex.name}}-n4
+{{hex.name}}-n5
+{{hex.name}}-n6

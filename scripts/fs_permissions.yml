@@ -1,0 +1,6 @@
+- file:
+    state: "directory"
+    path: "{{ data_path }}/jupyterhub"
+    owner: "bb"
+    mode: 0755
+    recurse: yes

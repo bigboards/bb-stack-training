@@ -1,0 +1,6 @@
+- file:
+    state: "directory"
+    path: "{{ item }}"
+  with_items:
+    - "{{ data_path }}/dfs"
+    - "{{ data_path }}/dfs/nn"

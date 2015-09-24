@@ -1,0 +1,13 @@
+{
+  "id": "[stack]bigboards$bb-stack-spark-on-hadoop",
+  "slug": "bb-stack-spark-on-hadoop",
+  "name": "Apache Spark on Apache Hadoop",
+  "description": "EXPERIMENTAL - things might break!!! Apache Spark™ is a fast and general engine for large-scale data processing, which is here deployed on Apache Hadoop for distributed storage and resource management.",
+  "type": "stack",
+  "owner": "bigboards",
+  "logo": "https://bitbucket-assetroot.s3.amazonaws.com/c/photos/2015/Feb/18/3592780503-2-bb-stack-spark-logo_avatar.png",
+  "type": "stack",
+  "architecture": "armv7l",
+  "supported_firmwares": ["feniks", "ember", "feniks-wip"],
+  "uri": "https://bitbucket.org/bigboards/bb-stack-spark-on-hadoop"
+}
