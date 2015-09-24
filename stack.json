@@ -1,5 +1,5 @@
 {
-  "id": "[stack]bigboards$bb-stack-spark-on-hadoop",
+  "id": "[stack]bigboards$bb-stack-training",
   "views": [
     {
       "label": "Yarn",

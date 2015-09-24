@@ -1,13 +1,13 @@
 {
-  "id": "[stack]bigboards$bb-stack-spark-on-hadoop",
-  "slug": "bb-stack-spark-on-hadoop",
-  "name": "Apache Spark on Apache Hadoop",
-  "description": "EXPERIMENTAL - things might break!!! Apache Spark™ is a fast and general engine for large-scale data processing, which is here deployed on Apache Hadoop for distributed storage and resource management.",
+  "id": "[stack]bigboards$bb-stack-training",
+  "slug": "bb-stack-training",
+  "name": "BigBoards Workshop",
+  "description": "!!! Work In Progress !!! This tint is used during the BigBoards Training Workshops to introduce participants in the way of Big Data.",
   "type": "stack",
   "owner": "bigboards",
-  "logo": "https://bitbucket-assetroot.s3.amazonaws.com/c/photos/2015/Feb/18/3592780503-2-bb-stack-spark-logo_avatar.png",
+  "logo": "http://www.accountwaresolutions.com/images/uploaded/Training.jpg",
   "type": "stack",
-  "architecture": "armv7l",
-  "supported_firmwares": ["feniks", "ember", "feniks-wip"],
-  "uri": "https://bitbucket.org/bigboards/bb-stack-spark-on-hadoop"
+  "architecture": "all",
+  "supported_firmwares": ["feniks", "ember", "feniks-wip", "gemini"],
+  "uri": "https://gitlab.com/bigboards/bb-stack-training.git"
 }
