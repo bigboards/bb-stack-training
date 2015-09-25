@@ -136,23 +136,74 @@
       }
     },
     {
-      "name": "spark_worker",
-      "image": "bigboards/spark",
-      "command": "/opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker spark://{{ hex.name }}-n1.hex:7077 -d /data",
+      "name": "sqoop",
+      "image": "bigboards/sqoop",
+      "command": "butterfly.server.py --host=0.0.0.0 --port 54500 --unsecure",
       "ports": [
-        7078,
-        8081
+        54500
       ],
       "config": {
-        "host_path": "spark_worker",
-        "container_path": "/opt/spark/conf"
+        "host_path": "sqoop",
+        "container_path": "/opt/hadoop/conf"
+      }
+    },
+    {
+      "name": "hive_server",
+      "image": "bigboards/hive",
+      "command": "/opt/hive/bin/hiveserver2",
+      "ports": [ 10000 ],
+      "config": {
+        "host_path": "hive",
+        "container_path": "/opt/hive/conf"
+      }
+    },
+    {
+      "name": "hcatalog",
+      "image": "bigboards/hive",
+      "command": "/opt/hive/hcatalog/sbin/hcat_server.sh",
+      "ports": [ 9083 ],
+      "config": {
+        "host_path": "hive",
+        "container_path": "/opt/hive/conf"
+      }
+    },
+    {
+      "name": "webhcatalog",
+      "image": "bigboards/hive",
+      "command": "/opt/hive/hcatalog/sbin/webhcat_server.sh",
+      "ports": [ 50111 ],
+      "config": {
+        "host_path": "hive",
+        "container_path": "/opt/hive/conf"
+      }
+    },
+    {
+      "name": "hive_cli",
+      "image": "bigboards/hive",
+      "command": "butterfly.server.py --host=0.0.0.0 --port 54501 --unsecure",
+      "ports": [
+        54501
+      ],
+      "config": {
+        "host_path": "hive",
+        "container_path": "/opt/hive/conf"
+      }
+    },
+    {
+      "name": "pig",
+      "image": "bigboards/pig",
+      "command": "butterfly.server.py --host=0.0.0.0 --port 54502 --unsecure",
+      "ports": [ 54502 ],
+      "config": {
+        "host_path": "pig",
+        "container_path": "/opt/hadoop/conf"
       }
     }
   ],
   "groups": [
     {
       "name": "hadoop_masters",
-      "runs_on": "host-coordinators",
+      "runs_on": "n6",
       "containers": [
         "namenode",
         "resourcemanager",
@@ -162,7 +213,7 @@
     },
     {
       "name": "hadoop_slaves",
-      "runs_on": "host-workers",
+      "runs_on": "all",
       "containers": [
         "datanode",
         "nodemanager"
@@ -170,13 +221,27 @@
     },
     {
       "name": "spark_master",
-      "runs_on": "host-coordinators",
+      "runs_on": "n6",
       "containers": ["spark_master"]
     },
     {
       "name": "frontends",
-      "runs_on": "host-coordinators",
-      "containers": ["jupyterhub"]
+      "runs_on": "n1",
+      "containers": [
+        "jupyterhub",
+        "pig",
+        "hive-cli",
+        "sqoop"
+      ]
+    },
+    {
+      "name": "hive",
+      "runs_on": "n2",
+      "containers": [
+        "hive_server",
+        "hcatalog",
+        "webhcatalog"
+      ]
     }
   ]
 }
