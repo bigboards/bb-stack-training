@@ -20,6 +20,21 @@
       "label": "Jupyter Hub",
       "url": "http://{{ nodes[hex.name + '-n1'].ip }}:8000/",
       "description": "The Notebook hub"
+    },
+    {
+      "label": "Sqoop Shell",
+      "url": "http://{{ nodes[hex.name + '-n1'].ip }}:54500/",
+      "description": "A Bash shell with the sqoop binaries available to do your thing"
+    },
+    {
+      "label": "Pig Shell",
+      "url": "http://{{ nodes[hex.name + '-n1'].ip }}:54502/",
+      "description": "A Bash shell with the pig binaries available to do your thing"
+    },
+    {
+      "label": "Hive Shell",
+      "url": "http://{{ nodes[hex.name + '-n1'].ip }}:54501/",
+      "description": "A Bash shell with the hive binaries available to do your thing"
     }
   ],
   "containers": [
