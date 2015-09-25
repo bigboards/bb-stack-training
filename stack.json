@@ -49,7 +49,7 @@
         "host_path": "jupyterhub",
         "container_path": "/tmp/jupyterhub"
       },
-      "pre_install": "scripts/fs_permissions.yml"
+      "pre_install": "scripts/jupyterhub/pre_install.yml"
     },
     {
       "name": "namenode",
