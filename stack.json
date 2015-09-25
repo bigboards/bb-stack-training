@@ -230,7 +230,7 @@
       "containers": [
         "jupyterhub",
         "pig",
-        "hive-cli",
+        "hive_cli",
         "sqoop"
       ]
     },
