@@ -5,7 +5,7 @@
   "description": "!!! Work In Progress !!! This tint is used during the BigBoards Training Workshops to introduce participants in the way of Big Data.",
   "type": "stack",
   "owner": "bigboards",
-  "logo": "http://www.accountwaresolutions.com/images/uploaded/Training.jpg",
+  "logo": "https://gitlab.com/uploads/project/avatar/485058/workshop.png",
   "type": "stack",
   "architecture": "all",
   "supported_firmwares": ["feniks", "ember", "feniks-wip", "gemini"],
