@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+    <property>
+        <name>mapreduce.framework.name</name>
+        <value>yarn</value>
+    </property>
+
+
+    <!-- These property values were generated with hdp-configuration-utils.py -->
+    <!-- armv7l => Using cores=4 memory=2GB disks=1 hbase=False               -->
+    <!-- x86_64 => Using cores=4 memory=16GB disks=1 hbase=False              -->
+    <!--                                                                      -->
+    <!-- This node's architecture is '{{ ansible_architecture }}'             -->
+
+    <property>
+        <name>mapreduce.map.java.opts</name>
+        <value>{{ (ansible_architecture == 'armv7l') | ternary('-Xmx512m','-Xmx3072m') }}</value>
+    </property>
+    <property>
+        <name>mapreduce.reduce.java.opts</name>
+        <value>{{ (ansible_architecture == 'armv7l') | ternary('-Xmx1024m','-Xmx3072m') }}</value>
+    </property>
+
+    <property>
+        <name>mapreduce.map.memory.mb</name>
+        <value>{{ (ansible_architecture == 'armv7l') | ternary('640','4096') }}</value>
+    </property>
+    <property>
+        <name>mapreduce.reduce.memory.mb</name>
+        <value>{{ (ansible_architecture == 'armv7l') | ternary('1280','4096') }}</value>
+    </property>
+
+    <property>
+        <name>mapreduce.task.io.sort.mb</name>
+        <value>{{ (ansible_architecture == 'armv7l') | ternary('256','1536') }}</value>
+    </property>
+
+
+
+    <property>
+        <name>mapreduce.jobhistory.address</name>
+        <value>{{hex.name}}.hex.bigboards.io:10020</value>
+    </property>
+    <property>
+        <name>mapreduce.jobhistory.webapp.address</name>
+        <value>{{hex.name}}.hex.bigboards.io:19888</value>
+    </property>
+</configuration>

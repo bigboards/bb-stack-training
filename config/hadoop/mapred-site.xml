@@ -56,10 +56,10 @@
 
     <property>
         <name>mapreduce.jobhistory.address</name>
-        <value>0.0.0.0:10020</value>
+        <value>{{hex.name}}.hex.bigboards.io:10020</value>
     </property>
     <property>
         <name>mapreduce.jobhistory.webapp.address</name>
-        <value>0.0.0.0:19888</value>
+        <value>{{hex.name}}.hex.bigboards.io:19888</value>
     </property>
 </configuration>
