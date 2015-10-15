@@ -2,5 +2,5 @@
     state: "directory"
     path: "{{ item }}"
   with_items:
-    - "{{ data_path }}/dfs"
-    - "{{ data_path }}/dfs/nn"
+    - "{{ dirs.data }}/dfs"
+    - "{{ dirs.data }}/dfs/nn"
