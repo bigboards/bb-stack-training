@@ -6,7 +6,6 @@
   "type": "stack",
   "owner": "bigboards",
   "logo": "https://gitlab.com/uploads/project/avatar/485058/workshop.png",
-  "type": "stack",
   "architecture": "all",
   "supported_firmwares": ["feniks", "ember", "feniks-wip", "gemini"],
   "uri": "https://gitlab.com/bigboards/bb-stack-training.git"
