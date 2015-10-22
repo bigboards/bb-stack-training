@@ -1,6 +1,9 @@
 - file:
     state: "directory"
     path: "{{ item }}"
+    owner: 1000
+    mode: 0755
+    recurse: yes
   with_items:
     - "[[ dirs.role_data ]]"
     - "[[ dirs.role_data ]]/dfs"

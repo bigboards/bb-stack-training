@@ -1,10 +1,9 @@
 - file:
     state: "directory"
-    path: "[[ dirs.role_data ]]"
-
-- file:
-    state: "directory"
-    path: "[[ dirs.role_data ]]/jupyterhub"
+    path: "{{ item }}"
     owner: 1000
     mode: 0755
     recurse: yes
+  with_items:
+    - "[[ dirs.role_data ]]"
+    - "[[ dirs.role_data ]]/jupyterhub"
