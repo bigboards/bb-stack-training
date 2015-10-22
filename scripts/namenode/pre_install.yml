@@ -1,6 +1,6 @@
 - file:
     state: "directory"
-    path: "{{ item }}"
+    path: "[[ item ]]"
   with_items:
-    - "{{ dirs.role_data }}/dfs"
-    - "{{ dirs.role_data }}/dfs/nn"
+    - "[[ dirs.role_data ]]/dfs"
+    - "[[ dirs.role_data ]]/dfs/nn"
