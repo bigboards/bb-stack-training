@@ -1,5 +1,9 @@
 - file:
     state: "directory"
+    path: "[[ dirs.role_data ]]"
+
+- file:
+    state: "directory"
     path: "[[ dirs.role_data ]]/jupyterhub"
     owner: 1000
     mode: 0755

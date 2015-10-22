@@ -2,5 +2,6 @@
     state: "directory"
     path: "[[ item ]]"
   with_items:
+    - "[[ dirs.role_data ]]"
     - "[[ dirs.role_data ]]/dfs"
     - "[[ dirs.role_data ]]/dfs/nn"
