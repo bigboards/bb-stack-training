@@ -1,7 +1,7 @@
 - file:
     state: "directory"
     path: "{{ item }}"
-    owner: bb
+    owner: 1000
     mode: 0755
     recurse: yes
   with_items:
