@@ -226,8 +226,8 @@
           }
         ,
           {
-            "container": "8080",
-            "host": "8080"
+            "container": "8070",
+            "host": "8070"
           }
         ],
         "command": "/opt/spark/bin/spark-class org.apache.spark.deploy.master.Master --port 7077 --webui-port 8070 -h {{ hex.name }}-n1.hex"
