@@ -1,12 +1,417 @@
 {
-  "id": "[stack]bigboards$bb-stack-training",
+  "id": "[stack]google-oauth2-103728492012393057640$bb-stack-training",
+  "owner": "google-oauth2-103728492012393057640",
+  "owner_name": "Daan Gerits",
   "slug": "bb-stack-training",
-  "name": "BigBoards Workshop",
-  "description": "!!! Work In Progress !!! This tint is used during the BigBoards Training Workshops to introduce participants in the way of Big Data.",
+  "name": "BigBoards Training",
   "type": "stack",
-  "owner": "bigboards",
+  "description": "!!WIP!! BigBoards Training Stack",
+  "scope": "public",
+  "uri": "https://gitlab.com/bigboards/bb-stack-training.git",
   "logo": "https://gitlab.com/uploads/project/avatar/485058/workshop.png",
   "architecture": "all",
-  "supported_firmwares": ["feniks", "ember", "feniks-wip", "gemini"],
-  "uri": "https://gitlab.com/bigboards/bb-stack-training.git"
+  "supported_firmwares": [
+    "v1.3"
+  ],
+  "stack": {
+    "groups": [
+      {
+        "runs_on": "n6",
+        "name": "hadoop_masters",
+        "containers": ["namenode", "resourcemanager", "proxyserver", "historyserver"]
+      }
+    ,
+      {
+        "runs_on": "all",
+        "name": "hadoop_slaves",
+        "containers": ["datanode", "nodemanager"]
+      }
+    ,
+      {
+        "runs_on": "n6",
+        "name": "spark_master",
+        "containers": ["spark_master"]
+      }
+    ,
+      {
+        "runs_on": "n1",
+        "name": "frontends",
+        "containers": ["jupyterhub","pig","hive_cli","sqoop"]
+      }
+    ,
+      {
+        "runs_on": "n2",
+        "name": "hive",
+        "containers": ["hcatalog","webhcatalog","hive_server"]
+      }
+    ],
+    "containers": [
+      {
+        "image": "bigboards/pyspark",
+        "name": "jupyterhub",
+        "volumes": [
+          {
+            "container": "/tmp/jupyterhub",
+            "host": "jupyterhub"
+          }
+        ],
+        "ports": [
+          {
+            "container": "8000",
+            "host": "8000"
+          }
+        ],
+        "command": "jupyterhub -f /srv/jupyterhub/jupyterhub_config.py",
+        "pre_install": "jupyterhub/pre_install.yml"
+      }
+    ,
+      {
+        "image": "bigboards/hadoop",
+        "name": "datanode",
+        "volumes": [
+          {
+            "container": "/opt/hadoop/etc/hadoop",
+            "host": "hadoop"
+          }
+        ],
+        "ports": [
+          {
+            "container": "1004",
+            "host": "1004"
+          }
+        ,
+          {
+            "container": "1006",
+            "host": "1006"
+          }
+        ,
+          {
+            "container": "50010",
+            "host": "50010"
+          }
+        ,
+          {
+            "container": "50020",
+            "host": "50020"
+          }
+        ,
+          {
+            "container": "50075",
+            "host": "50075"
+          }
+        ],
+        "command": "/opt/hadoop/bin/hdfs --config /opt/hadoop/etc/hadoop datanode"
+      }
+    ,
+      {
+        "image": "bigboards/hadoop",
+        "name": "resourcemanager",
+        "volumes": [
+          {
+            "container": "/opt/hadoop/etc/hadoop",
+            "host": "hadoop"
+          }
+        ],
+        "ports": [
+          {
+            "container": "8030",
+            "host": "8030"
+          }
+        ,
+          {
+            "container": "8031",
+            "host": "8031"
+          }
+        ,
+          {
+            "container": "8032",
+            "host": "8032"
+          }
+        ,
+          {
+            "container": "8033",
+            "host": "8033"
+          }
+        ,
+          {
+            "container": "8088",
+            "host": "8088"
+          }
+        ],
+        "command": "/opt/hadoop/bin/yarn --config /opt/hadoop/etc/hadoop resourcemanager"
+      }
+    ,
+      {
+        "image": "bigboards/hadoop",
+        "name": "nodemanager",
+        "volumes": [
+          {
+            "container": "/opt/hadoop/etc/hadoop",
+            "host": "hadoop"
+          }
+        ],
+        "ports": [
+          {
+            "container": "8040",
+            "host": "8040"
+          }
+        ,
+          {
+            "container": "8041",
+            "host": "8041"
+          }
+        ,
+          {
+            "container": "8042",
+            "host": "8042"
+          }
+        ],
+        "command": "/opt/hadoop/bin/yarn --config /opt/hadoop/etc/hadoop nodemanager"
+      }
+    ,
+      {
+        "image": "bigboards/hadoop",
+        "name": "proxyserver",
+        "volumes": [
+          {
+            "container": "/opt/hadoop/etc/hadoop",
+            "host": "hadoop"
+          }
+        ],
+        "ports": [
+          {
+            "container": "8080",
+            "host": "8080"
+          }
+        ],
+        "command": "/opt/hadoop/bin/yarn --config /opt/hadoop/etc/hadoop proxyserver"
+      }
+    ,
+      {
+        "image": "bigboards/hadoop",
+        "name": "historyserver",
+        "volumes": [
+          {
+            "container": "/opt/hadoop/etc/hadoop",
+            "host": "hadoop"
+          }
+        ],
+        "ports": [
+          {
+            "container": "10020",
+            "host": "10020"
+          }
+        ,
+          {
+            "container": "19888",
+            "host": "19888"
+          }
+        ],
+        "command": "/opt/hadoop/bin/yarn --config /opt/hadoop/etc/hadoop historyserver"
+      }
+    ,
+      {
+        "image": "bigboards/spark",
+        "name": "spark_master",
+        "volumes": [
+          {
+            "container": "/opt/spark/conf",
+            "host": "spark"
+          }
+        ],
+        "ports": [
+          {
+            "container": "7077",
+            "host": "7077"
+          }
+        ,
+          {
+            "container": "8080",
+            "host": "8080"
+          }
+        ],
+        "command": "/opt/spark/bin/spark-class org.apache.spark.deploy.master.Master --port 7077 --webui-port 8070 -h {{ hex.name }}-n1.hex"
+      }
+    ,
+      {
+        "image": "bigboards/hadoop",
+        "name": "namenode",
+        "volumes": [
+          {
+            "container": "/opt/hadoop/etc/hadoop",
+            "host": "namenode"
+          }
+        ],
+        "ports": [
+          {
+            "container": "8020",
+            "host": "8020"
+          }
+        ,
+          {
+            "container": "50070",
+            "host": "50070"
+          }
+        ,
+          {
+            "container": "50470",
+            "host": "50470"
+          }
+        ],
+        "command": "/opt/hadoop/bin/hdfs-namenode-wrapper.sh",
+        "pre_install": "namenode/pre_install.yml"
+      }
+    ,
+      {
+        "image": "bigboards/sqoop",
+        "name": "sqoop",
+        "volumes": [
+          {
+            "container": "/opt/hadoop/conf",
+            "host": "sqoop"
+          }
+        ],
+        "ports": [
+          {
+            "container": "54500",
+            "host": "54500"
+          }
+        ],
+        "command": "butterfly.server.py --host=0.0.0.0 --port=54500 --unsecure --login=false"
+      }
+    ,
+      {
+        "image": "bigboards/hive",
+        "name": "hive_server",
+        "volumes": [
+          {
+            "container": "/opt/hadoop/conf",
+            "host": "hive"
+          }
+        ],
+        "ports": [
+          {
+            "container": "10000",
+            "host": "10000"
+          }
+        ],
+        "command": "/opt/hive/bin/hiveserver2"
+      }
+    ,
+      {
+        "image": "bigboards/hive",
+        "name": "hcatalog",
+        "volumes": [
+          {
+            "container": "/opt/hive/conf",
+            "host": "hive"
+          }
+        ],
+        "ports": [
+          {
+            "container": "9083",
+            "host": "9083"
+          }
+        ],
+        "command": "/opt/hive/hcatalog/sbin/hcat_server.sh"
+      }
+    ,
+      {
+        "image": "bigboards/hive",
+        "name": "webhcatalog",
+        "volumes": [
+          {
+            "container": "/opt/hive/conf",
+            "host": "hive"
+          }
+        ],
+        "ports": [
+          {
+            "container": "50111",
+            "host": "50111"
+          }
+        ],
+        "command": "/opt/hive/hcatalog/sbin/webhcat_server.sh"
+      }
+    ,
+      {
+        "image": "bigboards/hive",
+        "name": "hive_cli",
+        "volumes": [
+          {
+            "container": "/opt/hive/conf",
+            "host": "hive"
+          }
+        ],
+        "ports": [
+          {
+            "container": "54501",
+            "host": "54501"
+          }
+        ],
+        "command": "butterfly.server.py --host=0.0.0.0 --port=54501 --unsecure --login=false"
+      }
+    ,
+      {
+        "image": "bigboards/pig",
+        "name": "pig",
+        "volumes": [
+          {
+            "container": "/opt/hadoop/conf",
+            "host": "pig"
+          }
+        ],
+        "ports": [
+          {
+            "container": "54502",
+            "host": "54502"
+          }
+        ],
+        "command": "butterfly.server.py --host=0.0.0.0 --port=54502 --unsecure --login=false"
+      }
+    ],
+    "views": [
+      {
+        "description": "The Yarn Web Console. It allows you to master the applications running within Yarn.",
+        "label": "Yarn",
+        "url": "http://node-1.{{hex.name}}.hex.bigboards.io:8088"
+      }
+    ,
+      {
+        "description": "The Web Console for the HDFS NameNode. It gives you more details about the data stored on the cluster",
+        "label": "HDFS",
+        "url": "http://node-1.{{hex.name}}.hex.bigboards.io:50070"
+      }
+    ,
+      {
+        "description": "The Spark Web UI",
+        "label": "Spark",
+        "url": "http://node-1.{{hex.name}}.hex.bigboards.io:8080"
+      }
+    ,
+      {
+        "description": "The Notebook hub",
+        "label": "Jupyter Hub",
+        "url": "http://{{hex.name}}.hex.bigboards.io:8000"
+      }
+    ,
+      {
+        "description": "A Bash shell with the sqoop binaries available to do your thing",
+        "label": "Sqoop",
+        "url": "http://{{hex.name}}.hex.bigboards.io:54500"
+      }
+    ,
+      {
+        "description": "A Bash shell with the pig binaries available to do your thing",
+        "label": "Pig",
+        "url": "http://{{hex.name}}.hex.bigboards.io:54502"
+      }
+    ,
+      {
+        "description": "A Bash shell with the hive binaries available to do your thing",
+        "label": "Hive",
+        "url": "http://{{hex.name}}.hex.bigboards.io:54501"
+      }
+    ]
+  }
 }
