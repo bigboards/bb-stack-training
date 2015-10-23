@@ -52,5 +52,5 @@
 # - SPARK_NICENESS      The scheduling priority for daemons. (Default: 0)
 
 SPARK_LOCAL_IP="{{ansible_eth1.ipv4.address}}"
-SPARK_MASTER_IP="{{hex.name}}.hex.bigboards.io"
+SPARK_MASTER_IP="node-6.{{hex.name}}.hex.bigboards.io"
 HADOOP_CONF_DIR="/opt/spark/conf"
