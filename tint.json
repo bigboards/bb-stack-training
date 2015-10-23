@@ -386,7 +386,7 @@
       {
         "description": "The Spark Web UI",
         "label": "Spark",
-        "url": "http://node-1.{{hex.name}}.hex.bigboards.io:8080"
+        "url": "http://node-1.{{hex.name}}.hex.bigboards.io:8070"
       }
     ,
       {
