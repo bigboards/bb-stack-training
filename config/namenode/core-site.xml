@@ -20,7 +20,7 @@
 <configuration>
   <property>
     <name>fs.defaultFS</name>
-    <value>hdfs://{{ hex.name }}.hex:8020/</value>
+    <value>hdfs://{{ hex.name }}-n1.hex:8020/</value>
   </property>
   <property>
     <name>hadoop.tmp.dir</name>

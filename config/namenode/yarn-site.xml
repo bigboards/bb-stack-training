@@ -57,7 +57,7 @@
 
     <property>
         <name>yarn.resourcemanager.hostname</name>
-        <value>{{ hex.name }}.hex</value>
+        <value>{{ hex.name }}-n1.hex</value>
     </property>
     <property>
         <name>yarn.resourcemanager.address</name>
