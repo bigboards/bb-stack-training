@@ -18,8 +18,20 @@
 
 <configuration>
     <property>
-        <name>dfs.namenode.rpc-bind-host</name>
-        <value>0.0.0.0</value>
+        <name>dfs.webhdfs.enabled</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>dfs.datanode.fsdataset.volume.choosing.policy</name>
+        <value>org.apache.hadoop.hdfs.server.datanode.fsdataset.AvailableSpaceVolumeChoosingPolicy</value>
+    </property>
+    <property>
+        <name>dfs.datanode.available-space-volume-choosing-policy.balanced-space-threshold</name>
+        <value>10737418240</value>
+    </property>
+    <property>
+        <name>dfs.datanode.available-space-volume-choosing-policy.balanced-space-preference-fraction</name>
+        <value>0.75</value>
     </property>
     <property>
         <name>dfs.blocksize</name>
@@ -33,6 +45,78 @@
         <name>dfs.replication</name>
         <value>2</value>
     </property>
+
+    <!-- ==================================================================== -->
+    <!-- Networking                                                           -->
+    <!-- ==================================================================== -->
+    <property>
+        <name>dfs.namenode.rpc-bind-host</name>
+        <value>0.0.0.0</value>
+        <description>
+            The actual address the RPC server will bind to. If this optional address is
+            set, it overrides only the hostname portion of dfs.namenode.rpc-address.
+            It can also be specified per name node or name service for HA/Federation.
+            This is useful for making the name node listen on all interfaces by
+            setting it to 0.0.0.0.
+        </description>
+    </property>
+
+    <property>
+        <name>dfs.namenode.servicerpc-bind-host</name>
+        <value>0.0.0.0</value>
+        <description>
+            The actual address the service RPC server will bind to. If this optional address is
+            set, it overrides only the hostname portion of dfs.namenode.servicerpc-address.
+            It can also be specified per name node or name service for HA/Federation.
+            This is useful for making the name node listen on all interfaces by
+            setting it to 0.0.0.0.
+        </description>
+    </property>
+
+    <property>
+        <name>dfs.namenode.http-bind-host</name>
+        <value>0.0.0.0</value>
+        <description>
+            The actual adress the HTTP server will bind to. If this optional address
+            is set, it overrides only the hostname portion of dfs.namenode.http-address.
+            It can also be specified per name node or name service for HA/Federation.
+            This is useful for making the name node HTTP server listen on all
+            interfaces by setting it to 0.0.0.0.
+        </description>
+    </property>
+
+    <property>
+        <name>dfs.namenode.https-bind-host</name>
+        <value>0.0.0.0</value>
+        <description>
+            The actual adress the HTTPS server will bind to. If this optional address
+            is set, it overrides only the hostname portion of dfs.namenode.https-address.
+            It can also be specified per name node or name service for HA/Federation.
+            This is useful for making the name node HTTPS server listen on all
+            interfaces by setting it to 0.0.0.0.
+        </description>
+    </property>
+
+
+    <!-- Let HDFS work with hostnames instead of ip addresses -->
+    <!--<property>-->
+    <!--<name>dfs.client.use.datanode.hostname</name>-->
+    <!--<value>true</value>-->
+    <!--<description>Whether clients should use datanode hostnames when-->
+    <!--connecting to datanodes.-->
+    <!--</description>-->
+    <!--</property>-->
+    <!--<property>-->
+    <!--<name>dfs.datanode.use.datanode.hostname</name>-->
+    <!--<value>true</value>-->
+    <!--<description>Whether datanodes should use datanode hostnames when-->
+    <!--connecting to other datanodes for data transfer.-->
+    <!--</description>-->
+    <!--</property>-->
+
+    <!-- ==================================================================== -->
+    <!-- Paths                                                                -->
+    <!-- ==================================================================== -->
     <property>
         <name>dfs.namenode.name.dir</name>
         <value>/data/dfs/nn</value>
@@ -41,34 +125,6 @@
         <name>dfs.datanode.data.dir</name>
         <value>/data/dfs/dn</value>
     </property>
-    <property>
-        <name>dfs.webhdfs.enabled</name>
-        <value>true</value>
-    </property>
 
-    <property>
-        <name>dfs.datanode.address</name>
-        <value>0.0.0.0:50010</value>
-    </property>
-    <property>
-        <name>dfs.datanode.http.address</name>
-        <value>0.0.0.0:50075</value>
-    </property>
-    <property>
-        <name>dfs.datanode.ipc.address</name>
-        <value>0.0.0.0:50020</value>
-    </property>
 
-    <property>
-        <name>dfs.datanode.fsdataset.volume.choosing.policy</name>
-        <value>org.apache.hadoop.hdfs.server.datanode.fsdataset.AvailableSpaceVolumeChoosingPolicy</value>
-    </property>
-    <property>
-        <name>dfs.datanode.available-space-volume-choosing-policy.balanced-space-threshold</name>
-        <value>10737418240</value>
-    </property>
-    <property>
-        <name>dfs.datanode.available-space-volume-choosing-policy.balanced-space-preference-fraction</name>
-        <value>0.75</value>
-    </property>
 </configuration>
