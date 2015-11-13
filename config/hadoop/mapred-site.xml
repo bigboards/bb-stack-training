@@ -53,6 +53,15 @@
     </property>
 
 
+    <property>
+        <name>mapreduce.map.cpu.vcores</name>
+        <value>{{ (ansible_architecture == 'armv7l') | ternary('1','2') }}</value>
+    </property>
+
+    <property>
+        <name>mapreduce.reduce.cpu.vcores</name>
+        <value>{{ (ansible_architecture == 'armv7l') | ternary('1','2') }}</value>
+    </property>
 
     <property>
         <name>mapreduce.jobhistory.address</name>
