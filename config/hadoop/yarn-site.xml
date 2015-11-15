@@ -141,4 +141,9 @@
         <value>{{ hex.name }}.hex.bigboards.io:9046</value>
     </property>
 
+    <property>
+        <name>yarn.timeline-service.store-class</name>
+        <value>org.apache.hadoop.yarn.server.timeline.MemoryTimelineStore</value>
+    </property>
+
 </configuration>
