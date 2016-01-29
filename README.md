@@ -2,7 +2,7 @@
 
 *by [BigBoards](http://bigboards.io)*
 
-In this **2-day workshop** you will learn how to build a complete** data processing pipeline**. The workshop is **hands-on** using a [BigBoards Hex](http://bigboards.io/orderprototype). You will be touching **several common Big Data technologies**.
+In this **2-day workshop** you will learn how to build a complete **data processing pipeline**. The workshop is **hands-on** using a [BigBoards Hex](http://bigboards.io/orderprototype). You will be touching **several common Big Data technologies**.
 
 The accompanying [repository](https://github.com/bigboards/bb-stack-training), contains all the technologies, resources and solutions to complete the workshop.
 
