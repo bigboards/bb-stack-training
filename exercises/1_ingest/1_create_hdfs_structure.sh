@@ -1,0 +1,13 @@
+#!/bin/bash
+
+echo "Creating the /data directory"
+# ...
+
+echo "Creating the /data/raw directory"
+# ...
+
+echo "Creating the /data/raw/weather directory"
+# ...
+
+echo "Creating the /data/raw/retail directory"
+# ...
