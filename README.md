@@ -37,7 +37,7 @@ You will learn the basics on Big Data and cluster processing using 2 presentatio
 The [BigBoards Hex](http://bigboards.io/orderprototype) gives you everything you need to get your hands dirty.
 
 ## License
-Made with a& for data!
+Made with ♡ for data!
 
 You are free to use the content, presentations and resources from the workshop. Do keep in mind that we have put an aweful lot of work in creating these artefacts: please mention us to spread the karma! 
 
