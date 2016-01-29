@@ -31,8 +31,8 @@ For now, we still host the data external to the big data clusters.
 ## Presentations 
 You will learn the basics on Big Data and cluster processing using 2 presentations:
 
-1. [Big Data Basics - Common]() explains Big Data and it use cases.
-2. [Big Data Basics - Building a Data Pipeline]() guides you through the practical exercises. This presentation covers all the technologies and the resources for this project.
+1. [Big Data Basics - Common](https://docs.google.com/presentation/d/1RqklSUIA1X6kW5UCPzgBAagf8YEV5eQhKB665Sx98_8/pub?start=false&loop=false&delayms=3000) explains Big Data and it use cases.
+2. [Big Data Basics - Building a Data Pipeline](https://docs.google.com/presentation/d/1LZadkLa4bnPerLE9ckaKR4ibrQxw5PiApnHeB2I27fQ/pub?start=false&loop=false&delayms=3000) guides you through the practical exercises. This presentation covers all the technologies and the resources for this project.
 
 The [BigBoards Hex](http://bigboards.io/orderprototype) gives you everything you need to get your hands dirty.
 
