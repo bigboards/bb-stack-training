@@ -36,6 +36,9 @@ You will learn the basics on Big Data and cluster processing using 2 presentatio
 
 The [BigBoards Hex](http://bigboards.io/orderprototype) gives you everything you need to get your hands dirty.
 
+## Practical
+You can login to jupyterhub with the default bigboards username (bb) and password (Swh^bdl)
+
 ## License
 Made with ♡ for data!
 
