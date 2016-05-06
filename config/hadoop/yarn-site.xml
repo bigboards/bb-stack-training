@@ -81,7 +81,7 @@
     <!-- ==================================================================== -->
     <property>
         <name>yarn.resourcemanager.hostname</name>
-        <value>{{ hex.name }}.hex.bigboards.io</value>
+        <value>{{ hex.name }}-n1</value>
     </property>
 
     <property>
